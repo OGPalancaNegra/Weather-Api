@@ -1,15 +1,17 @@
 package com.example.weatherapi.repo
 
+import com.example.weatherapi.Constants
 import com.example.weatherapi.model.WeatherResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://opentdb.com/"
+
 
 /* working:
     "https://api.github.com/"
@@ -31,8 +33,8 @@ private val moshi = Moshi.Builder()
  * object.
  */
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
+    .addConverterFactory(GsonConverterFactory.create())
+    .baseUrl(Constants.BASE_URL)
     .build()
 
 /**
@@ -44,7 +46,7 @@ interface WeatherService {
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("units") units: String?,
-        @Query("0f0802285eb8e758969921415b668747") appid: String?
+        @Query("appid") appid: String?
     ): Call<WeatherResponse>
 }
 
