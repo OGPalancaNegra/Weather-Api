@@ -6,7 +6,7 @@ A Weather Application that displays weather information based on the users curre
 * Display retrieved Weather information to the text views
 * Refresh the weather info on restart click
 
-#Technical Feature
+# Technical Feature
 The Weather Api App implements MVVM architecture using databiding, live data and Json Weather Api
 
 # App Packages
